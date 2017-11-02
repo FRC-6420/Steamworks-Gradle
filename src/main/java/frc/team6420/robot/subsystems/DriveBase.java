@@ -3,13 +3,13 @@ package frc.team6420.robot.subsystems;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.team6420.robot.commands.DriveWithJoystick;
 
 public class DriveBase extends PIDSubsystem {
 
-    private final DifferentialDrive driveBaseController;
+    private final RobotDrive driveBaseController;
     private final ADXRS450_Gyro gyro;
     private final Encoder leftEncoder;
     private final Encoder rightEncoder;
@@ -19,7 +19,7 @@ public class DriveBase extends PIDSubsystem {
     private double movementPower = 0;
     private final double powerIncrement = 0.05;
     
-    public DriveBase( DifferentialDrive driveBase, ADXRS450_Gyro gyro, Encoder leftEncoder, Encoder rightEncoder, AnalogInput ultrasonic ){
+    public DriveBase( RobotDrive driveBase, ADXRS450_Gyro gyro, Encoder leftEncoder, Encoder rightEncoder, AnalogInput ultrasonic ){
     	super( 0.1, 0, 0 );
     	this.setSetpointRelative( 0.0 );
         driveBaseController = driveBase;

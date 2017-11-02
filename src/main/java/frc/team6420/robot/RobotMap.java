@@ -1,12 +1,10 @@
 package frc.team6420.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class RobotMap {
     private SpeedController rightFront, leftFront, rightBack, leftBack;
-    private SpeedControllerGroup leftControllers, rightControllers;
-    private DifferentialDrive driveBase;
+    private RobotDrive driveBase;
 
     private DoubleSolenoid shift, gearDrop;
     private Encoder rightDriveEncoder, leftDriveEncoder;
@@ -21,15 +19,10 @@ public class RobotMap {
     RobotMap(){
         rightFront = new VictorSP( 0 );
         rightBack = new VictorSP( 1 );
-
-        rightControllers = new SpeedControllerGroup( rightFront, rightBack );
-
         leftFront = new VictorSP( 2 );
         leftBack = new VictorSP( 3 );
 
-        leftControllers = new SpeedControllerGroup( leftFront, leftBack );
-
-        driveBase = new DifferentialDrive( rightControllers, leftControllers );
+        driveBase = new RobotDrive( rightFront, rightBack, leftFront, leftBack );
 
         driveBase.setSafetyEnabled( true );
         driveBase.setExpiration( 0.5 );
@@ -100,7 +93,7 @@ public class RobotMap {
         return dio5;
     }
 
-    public DifferentialDrive getDriveBase() {
+    public RobotDrive getDriveBase() {
         return driveBase;
     }
 
